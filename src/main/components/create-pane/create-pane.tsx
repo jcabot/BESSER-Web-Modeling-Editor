@@ -31,6 +31,8 @@ import { Separator } from './create-pane-styles';
 import { composeBPMNPreview } from '../../packages/bpmn/bpmn-diagram-preview';
 import { composeStatePreview } from '../../packages/uml-state-diagram/state-preview';
 
+import { composeBotPreview } from '../../packages/agent-state-diagram/agent-state-preview';
+
 type OwnProps = {};
 
 type StateProps = {
@@ -89,6 +91,9 @@ const getInitialState = ({ type, canvas, translate, colorEnabled }: Props) => {
     case UMLDiagramType.StateMachineDiagram:
       previews.push(...composeStatePreview(canvas, translate));
       break;
+    case UMLDiagramType.AgentDiagram:
+      previews.push(...composeBotPreview(canvas, translate));
+      break;  
   }
   // if (colorEnabled) {
   //   utils.push(

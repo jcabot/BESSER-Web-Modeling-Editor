@@ -66,6 +66,13 @@ import { UMLStateMergeNode } from './uml-state-diagram/uml-state-merge-node/uml-
 import { UMLStateObjectNode } from './uml-state-diagram/uml-state-object-node/uml-state-object-node';
 import { UMLStateCodeBlock } from './uml-state-diagram/uml-state-code-block/uml-state-code-block';
 
+import { AgentIntent } from './agent-state-diagram/agent-intent-object-component/agent-intent';
+import { AgentIntentBody } from './agent-state-diagram/agent-intent-body/agent-intent-body';
+import { AgentState } from './agent-state-diagram/agent-state/agent-state';
+import { AgentStateBody } from './agent-state-diagram/agent-state-body/agent-state-body';
+import { AgentStateFallbackBody } from './agent-state-diagram/agent-state-fallback-body/agent-state-fallback-body';
+
+
 export const UMLElements = {
   [UMLElementType.Package]: UMLClassPackage,
   [UMLElementType.Class]: UMLClass,
@@ -133,4 +140,9 @@ export const UMLElements = {
   [UMLElementType.StateMergeNode]: UMLStateMergeNode,
   [UMLElementType.StateObjectNode]: UMLStateObjectNode,
   [UMLElementType.StateCodeBlock]: UMLStateCodeBlock,
+  [UMLElementType.AgentIntent]: AgentIntent,
+  [UMLElementType.AgentIntentBody]: AgentIntentBody,
+  [UMLElementType.AgentState]: AgentState,
+  [UMLElementType.AgentStateBody]: AgentStateBody,
+  [UMLElementType.AgentStateFallbackBody]: AgentStateFallbackBody,
 };

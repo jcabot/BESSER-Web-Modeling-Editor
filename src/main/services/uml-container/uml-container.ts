@@ -23,6 +23,7 @@ export abstract class UMLContainer extends UMLElement implements IUMLContainer {
 
   constructor(values?: DeepPartial<IUMLContainer>) {
     super();
+    console.log(values)
     assign<IUMLContainer>(this, values);
   }
 

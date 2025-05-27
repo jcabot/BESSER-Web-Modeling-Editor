@@ -30,7 +30,7 @@ const StyledTextArea = styled.textarea`
   max-width: 100%;
   min-height: 150px;
   font-family: monospace;
-  resize: vertical;
+
   white-space: pre;
   tab-size: 4;
   box-sizing: border-box;

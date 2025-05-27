@@ -61,6 +61,10 @@ export type UMLModelElement = {
   assessmentNote?: string;
 };
 
+export interface AgentModelElement extends UMLModelElement {
+  replyType: string;
+}
+
 export type UMLElement = UMLModelElement & {
   type: UMLElementType;
 };
@@ -90,10 +94,37 @@ export interface UMLState extends UMLElement {
   fallbackBodies: string[];
 }
 
+export interface AgentState extends UMLElement {
+  type: UMLElementType;
+  bodies: string[];
+  fallbackBodies: string[];
+  replyType: string;
+}
+
+export interface AgentIntent extends UMLElement {
+  type: UMLElementType;
+  bodies: string[];
+}
+
+export interface UMLReply extends UMLElement {
+  type: UMLElementType;
+  bodies: string[];
+}
+
 export type UMLStateTransition = UMLRelationship & {
   params?: string | string[];
 };
 
+export type AgentStateTransition = UMLRelationship & {
+  params?: string | string[];
+  condition?: string;
+  intentName?: string;
+  variable?: string;
+  operator?: string;
+  targetValue?: string;
+  conditionValue?: string | { variable: string; operator: string; targetValue: string }
+  fileType?: string;
+};
 
 export type UMLDeploymentNode = UMLElement & {
   stereotype: string;

@@ -126,9 +126,12 @@
         <h3 class="header">Diagram Type</h3>
         <div class="dropdown">
           <select name="type" data-cy="select-type" onchange="apollon.onChange(event)">
+           
             <option value="ClassDiagram">Class Diagram</option>
             <option value="StateMachineDiagram">State Machine Diagram</option>
-            <!-- <option value="ActivityDiagram">Activity Diagram</option>
+             <option value="AgentDiagram">Agent Diagram</option>
+            <!--<option value="ObjectDiagram">Object Diagram</option>
+             <option value="ActivityDiagram">Activity Diagram</option>
             <option value="ObjectDiagram">Object Diagram</option>
             <option value="UseCaseDiagram">Use Case Diagram</option>
             <option value="CommunicationDiagram">Communication Diagram</option>
@@ -195,7 +198,30 @@
           <button onclick="window.apollon.openOclPopup()">Open OCL</button>
         </div>
       </section> -->
+      <section id="agentGeneratorSection" style="display: none;">
+        <h3 class="header">BESSER Agent Generator</h3>
+        <div class="switch">
+          <button id="generateAgentButton" class="generate-button">Generate/Download</button>
+        </div>
+      </section>
       <section>
+        <section id="codeGeneratorSection" style="display: none;">
+        <h3 class="header">BESSER Code Generator</h3>
+        <div class="dropdown">
+          <select id="generatorSelect">
+            <option value="python">Python Classes</option>
+            <option value="java">Java Classes</option>
+            <option value="pydantic">Pydantic Classes</option>
+            <option value="sqlalchemy">SQLAlchemy Models</option>
+            <option value="sql">SQL Models</option>
+            <option value="django">Django Project</option>
+            <option value="backend">Backend</option>
+          </select>
+        </div>
+        <div class="switch">
+          <button id="generateButton" class="generate-button">Generate/Download</button>
+        </div>
+      </section>
         <h3 class="header">JSON Import/Export</h3>
         <div class="switch">
           <button onclick="window.apollon.exportDiagram()">Export JSON</button>

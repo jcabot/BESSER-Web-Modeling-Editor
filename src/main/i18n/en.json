@@ -20,7 +20,9 @@
     "messages": "Messages",
     "condition": "Conditions",
     "tokens": "Tokens",
-    "capacity": "Capacity"
+    "capacity": "Capacity",
+    "intent_name": "Intent name",
+    "training_sentences": "Training sentences"
   },
   "assessment": {
     "assessment": "Assessment for",
