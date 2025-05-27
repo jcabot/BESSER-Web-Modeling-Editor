@@ -32,7 +32,9 @@ export const PopoverContainer = styled.div<Props>`
   word-wrap: break-word;
 
   *,
-  *:before,
+  *:after {
+   box-sizing: inherit;
+   }
 
 
   ${(props) => {

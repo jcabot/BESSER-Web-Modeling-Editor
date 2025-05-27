@@ -271,7 +271,7 @@ class StateUpdate extends Component<Props, State> {
                       }
                     })
                   }
-                  this.create(AgentStateBody, "code")("def action_name(session: AgentSession):\n")
+                  this.create(AgentStateBody, "code")("def action_name(session: AgentSession):\n\n\n\n\n")
                   this.forceUpdate()
                 }}
               />
