@@ -354,7 +354,6 @@ class StateUpdate extends Component<Props, State> {
                     this.props.update(body.id, { name: value }); // Update the backend with the new value
                   }}
                   onChange={(editor, data, value) => {
-                    console.log('Code updated:', value); // Optional: Log changes
                     const body = bodies.find((body) => body.replyType === "code")!;
                     if (value.trim()) {
                       this.props.update(body.id, { name: value });

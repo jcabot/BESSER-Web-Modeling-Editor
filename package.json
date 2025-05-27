@@ -42,7 +42,6 @@
     "serve": "http-server dist -p 8080"
   },
   "dependencies": {
-    "codemirror": "5.65.19",
     "fast-json-patch": "3.1.1",
     "is-mobile": "4.0.0",
     "pepjs": "0.5.3",
