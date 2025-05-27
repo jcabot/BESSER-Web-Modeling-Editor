@@ -111,7 +111,7 @@ class AgentStateTransitionUpdateClass extends Component<Props, State> {
       // Assuming the structure: { AgentDiagram: { elements: { ... } } }
       const elements = parsed?.AgentDiagram?.elements || {};
       intentNames = Object.values(elements)
-        .filter((el: any) => el.type === "Intent" && typeof el.name === "string")
+        .filter((el: any) => el.type === "AgentIntent" && typeof el.name === "string")
         .map((el: any) => el.name);
       }
 
