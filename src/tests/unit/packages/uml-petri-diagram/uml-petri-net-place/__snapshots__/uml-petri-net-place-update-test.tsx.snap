@@ -10,7 +10,7 @@ exports[`test petri net arc update render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi kIvhJv"
-            maxlength="100"
+            maxlength="200"
             value=""
           />
           <button
@@ -47,7 +47,7 @@ exports[`test petri net arc update render 1`] = `
           </span>
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi kIvhJv"
-            maxlength="100"
+            maxlength="200"
             style="min-width: 0;"
             type="number"
             value="0"
@@ -70,7 +70,7 @@ exports[`test petri net arc update render 1`] = `
           >
             <input
               class="sc-iHGNWf sc-dtBdUo eHnZYi kIvhJv"
-              maxlength="100"
+              maxlength="200"
               type="number"
               value="Infinity"
             />

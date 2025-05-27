@@ -10,7 +10,7 @@ exports[`render the uml-object-name-component 1`] = `
         >
           <input
             class="sc-dcJsrY sc-iGgWBj hhtOpa iaTAlF"
-            maxlength="100"
+            maxlength="200"
             value="TestObjectComponent"
           />
           <button
@@ -43,7 +43,7 @@ exports[`render the uml-object-name-component 1`] = `
         </h1>
         <input
           class="sc-dcJsrY sc-iGgWBj hhtOpa lpeQEi"
-          maxlength="100"
+          maxlength="200"
           value=""
         />
       </section>
@@ -58,7 +58,7 @@ exports[`render the uml-object-name-component 1`] = `
         </h1>
         <input
           class="sc-dcJsrY sc-iGgWBj hhtOpa lpeQEi"
-          maxlength="100"
+          maxlength="200"
           value=""
         />
       </section>

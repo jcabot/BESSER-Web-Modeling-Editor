@@ -50,7 +50,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationSourceLinkMessage0"
           />
           <button
@@ -93,7 +93,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationSourceLinkMessage1"
           />
           <button
@@ -136,7 +136,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationSourceLinkMessage2"
           />
           <button
@@ -179,7 +179,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationTargetLinkMessage0"
           />
           <button
@@ -222,7 +222,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationTargetLinkMessage1"
           />
           <button
@@ -265,7 +265,7 @@ exports[`test communication link popup render 1`] = `
         >
           <input
             class="sc-iHGNWf sc-dtBdUo eHnZYi cpgdNd"
-            maxlength="100"
+            maxlength="200"
             value="CommunicationTargetLinkMessage2"
           />
           <button
@@ -305,7 +305,7 @@ exports[`test communication link popup render 1`] = `
         </div>
         <input
           class="sc-iHGNWf sc-dtBdUo eHnZYi jRogEI"
-          maxlength="100"
+          maxlength="200"
           value=""
         />
       </section>

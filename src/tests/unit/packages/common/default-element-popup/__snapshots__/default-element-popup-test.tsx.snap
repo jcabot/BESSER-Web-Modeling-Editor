@@ -11,7 +11,7 @@ exports[`test default element popup render 1`] = `
           >
             <input
               class="sc-iHGNWf sc-dtBdUo eHnZYi kIvhJv"
-              maxLength="100"
+              maxLength="200"
             />
             <button
               class="sc-koXPp sc-bmzYkS hyqBEI fSLmzE"

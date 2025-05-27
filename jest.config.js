@@ -158,6 +158,15 @@ module.exports = {
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['.*/tests/unit/test-utils/.*'],
 
+  moduleNameMapper: {
+  '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
+  transformIgnorePatterns: ['node_modules/(?!(codemirror)/)'],
+  transform: {
+    '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
+  },
+
+
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
 
