@@ -102,21 +102,36 @@ class AgentStateTransitionUpdateClass extends Component<Props, State> {
 
   render() {
     const { element } = this.props;
-    // Fetch intent names from localStorage "apollonModels"
+    // Fetch intent names from localStorage
     let intentNames: string[] = [];
     try {
-      const stored = localStorage.getItem("apollonModels");
-      if (stored) {
-      const parsed = JSON.parse(stored);
-      // Assuming the structure: { AgentDiagram: { elements: { ... } } }
-      const elements = parsed?.AgentDiagram?.elements || {};
-      intentNames = Object.values(elements)
-        .filter((el: any) => el.type === "AgentIntent" && typeof el.name === "string")
-        .map((el: any) => el.name);
+      // First check if there is apollon_latest
+      const latestDiagramId = localStorage.getItem("apollon_latest");
+      if (latestDiagramId) {
+        // Directly look for the diagram data using the correct key pattern
+        const diagramData = localStorage.getItem(`apollon_diagram_${latestDiagramId}`);
+        if (diagramData) {
+          const parsedDiagram = JSON.parse(diagramData);
+          // Extract elements from the model structure
+          const elements = parsedDiagram?.model?.elements || {};
+          intentNames = Object.values(elements)
+            .filter((el: any) => el.type === "AgentIntent" && typeof el.name === "string")
+            .map((el: any) => el.name);
+        }
+      } else {
+        // Fall back to the old method
+        const stored = localStorage.getItem("apollonModels");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          // Assuming the structure: { AgentDiagram: { elements: { ... } } }
+          const elements = parsed?.AgentDiagram?.elements || {};
+          intentNames = Object.values(elements)
+            .filter((el: any) => el.type === "AgentIntent" && typeof el.name === "string")
+            .map((el: any) => el.name);
+        }
       }
-
     } catch (e) {
-
+      // Error handling remains the same
     }
     return (
       <div>
@@ -274,4 +289,4 @@ const enhance = compose<ComponentClass<OwnProps>>(
   }),
 );
 
-export const AgentStateTransitionUpdate = enhance(AgentStateTransitionUpdateClass); 
+export const AgentStateTransitionUpdate = enhance(AgentStateTransitionUpdateClass);
