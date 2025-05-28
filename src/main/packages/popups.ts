@@ -151,4 +151,5 @@ export const Popups: { [key in UMLElementType | UMLRelationshipType]: ComponentT
   [UMLRelationshipType.BPMNFlow]: BPMNFlowUpdate,
   [UMLRelationshipType.StateTransition]: UMLStateTransitionUpdate,
   [UMLRelationshipType.AgentStateTransition]: AgentStateTransitionUpdate,
+  [UMLRelationshipType.AgentStateTransitionInit]: DefaultRelationshipPopup,
 };

@@ -11,6 +11,7 @@ import { Text } from '../../../utils/svg/text';
 import { UMLElementType } from '../../uml-element-type';
 import { AgentStateBody } from '../agent-state-body/agent-state-body';
 import { AgentStateFallbackBody } from '../agent-state-fallback-body/agent-state-fallback-body';
+import { AgentRelationshipType } from '..';
 
 export interface IUMLState extends IUMLContainer {
   italic: boolean;
@@ -29,6 +30,7 @@ export class AgentState extends UMLContainer implements IUMLState {
   };
   static stereotypeHeaderHeight = 50;
   static nonStereotypeHeaderHeight = 40;
+  static supportedRelationships = [AgentRelationshipType.AgentStateTransition, AgentRelationshipType.AgentStateTransitionInit];
 
   type: UMLElementType = AgentElementType.AgentState;
   italic: boolean = false;

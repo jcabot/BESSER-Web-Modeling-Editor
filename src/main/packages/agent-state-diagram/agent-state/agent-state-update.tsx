@@ -24,8 +24,8 @@ import { UMLElements } from '../../uml-elements';
 import { AgentState } from './agent-state';
 import BotBodyUpdate from '../agent-state-body/agent-state-body-update';
 import { AgentStateMember } from '../agent-state/agent-state-member';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';

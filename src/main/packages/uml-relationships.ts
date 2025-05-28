@@ -30,6 +30,7 @@ import { FlowchartFlowline } from './flowchart/flowchart-flowline/flowchart-flow
 import { BPMNFlow } from './bpmn/bpmn-flow/bpmn-flow';
 import { UMLStateTransition } from './uml-state-diagram/uml-state-transition/uml-state-transition';
 import { AgentStateTransition } from './agent-state-diagram/agent-state-transition/agent-state-transition';
+import { AgentStateTransitionInit } from './agent-state-diagram/agent-state-transition-init/agent-state-transition-init';
 
 type UMLRelationships = { [key in UMLRelationshipType]: new (values?: IUMLRelationship) => UMLRelationship };
 
@@ -64,4 +65,5 @@ export const UMLRelationships = {
   [UMLRelationshipType.BPMNFlow]: BPMNFlow,
   [UMLRelationshipType.StateTransition]: UMLStateTransition,
   [UMLRelationshipType.AgentStateTransition]: AgentStateTransition,
+  [UMLRelationshipType.AgentStateTransitionInit]: AgentStateTransitionInit,
 };

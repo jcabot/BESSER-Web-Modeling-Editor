@@ -80,6 +80,7 @@ import { AgentIntentMemberComponent } from './agent-state-diagram/agent-intent-o
 import { AgentStateComponent } from './agent-state-diagram/agent-state/agent-state-component';
 import { AgentStateMemberComponent } from './agent-state-diagram/agent-state/agent-state-member-component';
 import { AgentStateTransitionComponent } from './agent-state-diagram/agent-state-transition/agent-state-transition-component';
+import { AgentStateTransitionInitComponent } from './agent-state-diagram/agent-state-transition-init/agent-state-transition-init-component';
 
 export const Components: {
   [key in UMLElementType | UMLRelationshipType]:
@@ -188,4 +189,5 @@ export const Components: {
   [UMLElementType.AgentStateBody]: AgentStateMemberComponent,
   [UMLElementType.AgentStateFallbackBody]: AgentStateMemberComponent,
   [UMLRelationshipType.AgentStateTransition]: AgentStateTransitionComponent,
+  [UMLRelationshipType.AgentStateTransitionInit]: AgentStateTransitionInitComponent,
 };
