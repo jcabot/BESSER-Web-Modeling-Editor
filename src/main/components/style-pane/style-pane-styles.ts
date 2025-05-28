@@ -71,3 +71,18 @@ export const Button = styled.button`
   align-self: center;
   cursor: pointer;
 `;
+
+export const FieldRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: ${(props) => props.theme.color.background};
+  color: ${(props) => props.theme.color.primaryContrast};
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+  }
+`;
