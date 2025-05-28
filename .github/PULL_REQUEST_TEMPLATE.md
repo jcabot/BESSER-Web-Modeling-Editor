@@ -1,10 +1,10 @@
-<!-- Thanks for contributing to Apollon! Before you submit your pull request, please make sure to check the following boxes by putting an x in the [ ] (don't: [x ], [ x], do: [x]) -->
+<!-- Thanks for contributing to BESSER Web Modeling Editor! Before you submit your pull request, please make sure to check the following boxes by putting an x in the [ ] (don't: [x ], [ x], do: [x]) -->
 <!-- If your pull request is not ready for review yet, create a draft pull request! -->
 
 ### Checklist
 - [ ] I documented the TypeScript code using JSDoc style.
-- [ ] I added multiple screenshots/screencasts of my UI changes
-- [ ] I translated all the newly inserted strings into German and English
+- [ ] I added multiple screenshots/screencasts of my UI changes.
+- [ ] I translated all the newly inserted strings into German and English.
 
 ### Motivation and Context
 <!-- Why is this change required? What problem does it solve? -->
