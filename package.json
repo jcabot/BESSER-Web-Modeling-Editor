@@ -21,11 +21,11 @@
   },
   "scripts": {
     "start": "webpack serve --config ./webpack/webpack.dev.js",
-    "build": "rm -rf dist && webpack --config ./webpack/webpack.prod.js",
+    "build": "rimraf dist && webpack --config ./webpack/webpack.prod.js",
     "lint": "npm run lint:ts && npm run lint:css",
     "lint:ts": "eslint -c .eslintrc.js src/main",
     "lint:css": "stylelint 'src/**/*.ts'",
-    "prepare": "rm -rf lib && tsc -p . && tsc -p tsconfig.es5.json",
+    "prepare": "rimraf lib && tsc -p . && tsc -p tsconfig.es5.json",
     "prettier:check": "prettier --check 'src/{main,tests}/**/*.{json,ts,tsx,js,jsx,css,scss,html}'",
     "prettier:write": "prettier --write 'src/{main,tests}/**/*.{json,ts,tsx,js,jsx,css,scss,html}'",
     "test": "jest -w=4",
@@ -116,6 +116,7 @@
     "webpack": "5.96.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.2",
-    "webpack-merge": "5.10.0"
+    "webpack-merge": "5.10.0",
+    "rimraf": "5.0.5"
   }
 }
