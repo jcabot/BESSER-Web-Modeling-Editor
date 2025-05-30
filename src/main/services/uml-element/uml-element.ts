@@ -30,6 +30,10 @@ export interface IUMLElement {
   fillColor?: string;
   strokeColor?: string;
   textColor?: string;
+  /** Description of the element */
+  description?: string;
+  /** URI of the element */
+  uri?: string;
   /** Note to show for element's assessment */
   assessmentNote?: string;
   isManuallyLayouted?: boolean;
@@ -109,6 +113,8 @@ export abstract class UMLElement implements IUMLElement, ILayoutable {
   fillColor?: string;
   strokeColor?: string;
   textColor?: string;
+  description?: string;
+  uri?: string;
   assessmentNote?: string;
   resizeFrom: ResizeFrom = ResizeFrom.BOTTOMRIGHT;
 
@@ -140,6 +146,8 @@ export abstract class UMLElement implements IUMLElement, ILayoutable {
       fillColor: this.fillColor,
       strokeColor: this.strokeColor,
       textColor: this.textColor,
+      description: this.description,
+      uri: this.uri,
       assessmentNote: this.assessmentNote,
     };
   }
@@ -155,6 +163,8 @@ export abstract class UMLElement implements IUMLElement, ILayoutable {
     this.fillColor = values.fillColor;
     this.strokeColor = values.strokeColor;
     this.textColor = values.textColor;
+    this.description = values.description;
+    this.uri = values.uri;
     this.assessmentNote = values.assessmentNote;
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ModelState } from '../../store/model-state';
 import { Button } from '../button/button';
-import { RollerIcon } from '../icon/roller';
+import { GearIcon } from '../icon/gear';
 
 type Props = { onClick: any; colorEnabled?: boolean };
 
@@ -13,7 +13,7 @@ export function ColorButtonComponent({ onClick, colorEnabled }: Props) {
 
   return (
     <Button color="link" tabIndex={-1} onClick={onClick}>
-      <RollerIcon />
+      <GearIcon />
     </Button>
   );
 }

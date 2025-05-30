@@ -29,6 +29,10 @@ class ComponentUpdate extends Component<Props, State> {
     }));
   };
 
+  private onFieldChange = (id: string, values: { description?: string; uri?: string }) => {
+    this.props.update(id, values);
+  };
+
   render() {
     const { element } = this.props;
 
@@ -48,6 +52,9 @@ class ComponentUpdate extends Component<Props, State> {
           open={this.state.colorOpen}
           element={element}
           onColorChange={this.props.update}
+          onFieldChange={this.onFieldChange}
+          showDescription
+          showUri
           lineColor
           textColor
           fillColor

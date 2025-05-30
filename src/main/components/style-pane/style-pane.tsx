@@ -8,16 +8,20 @@ import { withCanvas } from '../canvas/with-canvas';
 import { I18nContext } from '../i18n/i18n-context';
 import { localized } from '../i18n/localized';
 import { ModelState } from '../store/model-state';
+import { Textfield } from '../controls/textfield/textfield';
 import { ColorSelector } from './color-selector';
-import { Color, Container, Divider, Row } from './style-pane-styles';
+import { Color, Container, Divider, Row, FieldRow } from './style-pane-styles';
 
 type OwnProps = {
   open: boolean;
   element: IUMLElement;
   onColorChange: (id: string, values: { fillColor?: string; textColor?: string; strokeColor?: string }) => void;
+  onFieldChange?: (id: string, values: { description?: string; uri?: string }) => void;
   fillColor?: boolean;
   lineColor?: boolean;
   textColor?: boolean;
+  showDescription?: boolean;
+  showUri?: boolean;
 };
 
 type StateProps = {};
@@ -71,6 +75,20 @@ class StylePaneComponent extends Component<Props, State> {
     onColorChange(element.id, { textColor: color });
   };
 
+  handleDescriptionChange = (description: string) => {
+    const { element, onFieldChange } = this.props;
+    if (onFieldChange) {
+      onFieldChange(element.id, { description });
+    }
+  };
+
+  handleUriChange = (uri: string) => {
+    const { element, onFieldChange } = this.props;
+    if (onFieldChange) {
+      onFieldChange(element.id, { uri });
+    }
+  };
+
   toggleFillSelect = () => {
     this.setState((prevState) => ({
       fillSelectOpen: !prevState.fillSelectOpen,
@@ -97,13 +115,41 @@ class StylePaneComponent extends Component<Props, State> {
 
   render() {
     const { fillSelectOpen, strokeSelectOpen, textSelectOpen } = this.state;
-    const { open, element, fillColor, lineColor, textColor } = this.props;
+    const { open, element, fillColor, lineColor, textColor, showDescription, showUri } = this.props;
     const noneOpen = !fillSelectOpen && !strokeSelectOpen && !textSelectOpen;
 
     if (!open) return null;
 
     return (
       <Container>
+        {showDescription && (
+          <>
+            <FieldRow>
+              <label>Description</label>
+              <Textfield
+                value={element?.description || ''}
+                onChange={this.handleDescriptionChange}
+                placeholder="Enter description..."
+                size="sm"
+              />
+            </FieldRow>
+            <Divider />
+          </>
+        )}
+        {showUri && (
+          <>
+            <FieldRow>
+              <label>URI</label>
+              <Textfield
+                value={element?.uri || ''}
+                onChange={this.handleUriChange}
+                placeholder="Enter URI..."
+                size="sm"
+              />
+            </FieldRow>
+            <Divider />
+          </>
+        )}
         <ColorRow
           title="Fill Color"
           condition={fillColor && (fillSelectOpen || noneOpen)}

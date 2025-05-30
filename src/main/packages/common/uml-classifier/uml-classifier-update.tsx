@@ -77,6 +77,10 @@ class ClassifierUpdate extends Component<Props, State> {
     }));
   };
 
+  private onFieldChange = (id: string, values: { description?: string; uri?: string }) => {
+    this.props.update(id, values);
+  };
+
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any) {
     if (this.state.fieldToFocus) {
       this.state.fieldToFocus.focus();
@@ -108,6 +112,9 @@ class ClassifierUpdate extends Component<Props, State> {
             open={this.state.colorOpen}
             element={element}
             onColorChange={this.props.update}
+            onFieldChange={this.onFieldChange}
+            showDescription
+            showUri
             fillColor
             lineColor
             textColor
