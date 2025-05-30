@@ -16,6 +16,7 @@ import { UMLRelationshipRepository } from '../../../services/uml-relationship/um
 import { AgentStateTransition, IUMLStateTransition } from './agent-state-transition';
 import { ColorButton } from '../../../components/controls/color-button/color-button';
 import { StylePane } from '../../../components/style-pane/style-pane';
+import { Dropdown } from '../../../components/controls/dropdown/dropdown';
 
 const Flex = styled.div`
   display: flex;
@@ -71,34 +72,6 @@ class AgentStateTransitionUpdateClass extends Component<Props, State> {
     }));
   };
 
-  private addParam = () => {
-    const newId = (Math.max(...this.state.paramIds.map(Number)) + 1).toString();
-    this.setState(
-      prevState => ({ paramIds: [...prevState.paramIds, newId] }),
-      () => {
-        const newParams = { ...this.props.element.params, [newId]: '' };
-        this.props.update<AgentStateTransition>(this.props.element.id, { params: newParams });
-      }
-    );
-  };
-
-  private removeParam = (id: string) => {
-    this.setState(
-      prevState => ({
-        paramIds: prevState.paramIds.filter(paramId => paramId !== id)
-      }),
-      () => {
-        const newParams = { ...this.props.element.params };
-        delete newParams[id];
-        this.props.update<AgentStateTransition>(this.props.element.id, { params: newParams });
-      }
-    );
-  };
-
-  private handleParamChange = (id: string, value: string) => {
-    const newParams = { ...this.props.element.params, [id]: value };
-    this.props.update<AgentStateTransition>(this.props.element.id, { params: newParams });
-  };
 
   render() {
     const { element } = this.props;
@@ -154,116 +127,86 @@ class AgentStateTransitionUpdateClass extends Component<Props, State> {
         </section>
         <section>
           <Header>Condition</Header>
-            <select
-            value={element.condition || "when_intent_matched"}
-            onChange={e =>
-              this.props.update<AgentStateTransition>(element.id, { condition: e.target.value })
+          <Dropdown
+            value={element.condition || 'when_intent_matched'}
+            onChange={value =>
+              this.props.update<AgentStateTransition>(element.id, { condition: value })
             }
-            style={{ width: "100%", padding: "6px", marginTop: "4px", marginBottom: "12px" }}
-            >
-            <option value="when_intent_matched">When Intent Matched</option>
-            <option value="when_no_intent_matched">When No Intent Matched</option>
-            <option value="when_variable_operation_matched">Variable Operation Matched</option>
-            <option value="when_file_received">File Received</option>
-            <option value="auto">Auto Transition</option>
-            </select>
-            {/* Intent name dropdown, only shown if condition is "when_intent_matched" */}
-            {element.condition === "when_intent_matched" && (
-            <React.Fragment>
-              <select
-              value={element.intentName || ""}
-              onChange={e =>
-                this.props.update<AgentStateTransition>(element.id, { intentName: e.target.value })
+          >
+            <Dropdown.Item value="when_intent_matched">When Intent Matched</Dropdown.Item>
+            <Dropdown.Item value="when_no_intent_matched">When No Intent Matched</Dropdown.Item>
+            <Dropdown.Item value="when_variable_operation_matched">Variable Operation Matched</Dropdown.Item>
+            <Dropdown.Item value="when_file_received">File Received</Dropdown.Item>
+            <Dropdown.Item value="auto">Auto Transition</Dropdown.Item>
+          </Dropdown>
+          {/* Intent name dropdown, only shown if condition is "when_intent_matched" */}
+          {element.condition === "when_intent_matched" && (
+            <Dropdown
+              value={element.intentName || '__placeholder__'}
+              onChange={value =>
+                this.props.update<AgentStateTransition>(element.id, { intentName: value === '__placeholder__' ? '' : value })
               }
-              style={{ width: "100%", padding: "6px", marginTop: "4px", marginBottom: "12px" }}
-              >
-              <option value="" disabled>
-                Select intent
-              </option>
-              {intentNames.map((name, idx) => (
-                <option key={idx} value={name}>
-                {name}
-                </option>
-              ))}
-              </select>
-            </React.Fragment>
-            )}
-            {/* Variable match fields, only shown if condition is "variable_matched" */}
-            {element.condition === "when_variable_operation_matched" && (
-                <React.Fragment>
-                <Textfield
+            >
+              {[
+                <Dropdown.Item value="__placeholder__" key="intent-placeholder">Select intent</Dropdown.Item>,
+                ...intentNames.map((name, idx) => (
+                  <Dropdown.Item key={idx} value={name}>
+                    {name}
+                  </Dropdown.Item>
+                ))
+              ]}
+            </Dropdown>
+          )}
+          {/* Variable match fields, only shown if condition is "variable_matched" */}
+          {element.condition === "when_variable_operation_matched" && (
+            <React.Fragment>
+              <Textfield
                 value={element.variable || ""}
                 onChange={value =>
                   this.props.update<AgentStateTransition>(element.id, { variable: value })
                 }
                 placeholder="Variable"
                 style={{ marginBottom: "8px" }}
-                />
-                <select
-                value={element.operator || "=="}
-                onChange={e =>
-                  this.props.update<AgentStateTransition>(element.id, { operator: e.target.value })
+              />
+              <Dropdown
+                value={element.operator || '=='}
+                onChange={value =>
+                  this.props.update<AgentStateTransition>(element.id, { operator: value })
                 }
-                style={{ width: "100%", padding: "6px", marginBottom: "8px" }}
-                >
-                <option value="<">&lt;</option>
-                <option value="<=">&le;</option>
-                <option value="==">==</option>
-                <option value=">=">&ge;</option>
-                <option value=">">&gt;</option>
-                <option value="!=">!=</option>
-                </select>
-                <Textfield
+              >
+                <Dropdown.Item value="<">&lt;</Dropdown.Item>
+                <Dropdown.Item value="<=">&le;</Dropdown.Item>
+                <Dropdown.Item value="==">==</Dropdown.Item>
+                <Dropdown.Item value=">=">&ge;</Dropdown.Item>
+                <Dropdown.Item value=">">&gt;</Dropdown.Item>
+                <Dropdown.Item value="!=">!=</Dropdown.Item>
+              </Dropdown>
+              <Textfield
                 value={element.targetValue || ""}
                 onChange={value =>
                   this.props.update<AgentStateTransition>(element.id, { targetValue: value })
                 }
                 placeholder="Target value"
-                />
-                </React.Fragment>
-              )}
-              {element.condition === "when_file_received" && (
-                <select
-                value={element.fileType || ""}
-                onChange={e =>
-                  this.props.update<AgentStateTransition>(element.id, { fileType: e.target.value })
-                }
-                style={{ width: "100%", padding: "6px", marginTop: "4px", marginBottom: "12px" }}
-                >
-                <option value="" disabled>
-                  Select file type
-                </option>
-                <option value="PDF">PDF</option>
-                <option value="TXT">TXT</option>
-                <option value="JSON">JSON</option>
-                </select>
-              )}
-            
-        </section>
-        <section>
-          <Flex>
-            <Header>Parameters</Header>
-            <Button color="link" onClick={this.addParam}>
-              Add
-            </Button>
-          </Flex>
-          {this.state.paramIds.map((id, index) => (
-            <ParamContainer key={index}>
-              <Textfield
-                value={this.props.element.params[id]}
-                onChange={(value) => this.handleParamChange(id, value)}
-                placeholder={`Parameter ${index + 1}`}
               />
-              {this.state.paramIds.length > 1 && (
-                <ParamControls>
-                  <Button color="link" onClick={() => this.removeParam(id)}>
-                  <TrashIcon />
-                  </Button>
-                </ParamControls>
-              )}
-            </ParamContainer>
-          ))}
+            </React.Fragment>
+          )}
+          {element.condition === "when_file_received" && (
+            <Dropdown
+              value={element.fileType || '__placeholder__'}
+              onChange={value =>
+                this.props.update<AgentStateTransition>(element.id, { fileType: value === '__placeholder__' ? '' : value })
+              }
+            >
+              {[
+                <Dropdown.Item value="__placeholder__" key="filetype-placeholder">Select file type</Dropdown.Item>,
+                <Dropdown.Item value="PDF" key="pdf">PDF</Dropdown.Item>,
+                <Dropdown.Item value="TXT" key="txt">TXT</Dropdown.Item>,
+                <Dropdown.Item value="JSON" key="json">JSON</Dropdown.Item>
+              ]}
+            </Dropdown>
+          )}
         </section>
+
         <StylePane
           open={this.state.colorOpen}
           element={element}
